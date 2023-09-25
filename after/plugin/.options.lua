@@ -47,3 +47,5 @@ vim.diagnostic.config({
 })
 -- Doesn't create swap files
 vim.opt.swapfile = false
+-- Makes status line span entire window
+vim.opt.laststatus = 3

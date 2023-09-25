@@ -16,6 +16,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
+
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
@@ -74,9 +75,11 @@ require('lazy').setup({
     'nvim-lualine/lualine.nvim',
     opts = {
       options = {
+        theme = 'gruvbox',
         icons_enabled = false,
         component_separators = '|',
         section_separators = '',
+        globalstatus = true
       },
     },
   },
@@ -165,7 +168,7 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 
 -- Treesitter
 require('nvim-treesitter.configs').setup {
-  ensure_installed = { 'lua', 'tsx', 'typescript', 'ocaml', 'javascript', 'html', 'css' },
+  ensure_installed = { 'lua', 'tsx', 'typescript', 'ocaml', 'javascript', 'html', 'css', 'svelte' },
 
   auto_install = false,
 
@@ -320,7 +323,9 @@ mason_lspconfig.setup_handlers {
 -- See `:help cmp`
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
-require('luasnip.loaders.from_vscode').lazy_load()
+require('luasnip.loaders.from_vscode').lazy_load(
+  { paths = { "./snippets" } }
+)
 luasnip.config.setup {}
 
 cmp.setup {
@@ -369,5 +374,4 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
-
 -- vim: ts=2 sts=2 sw=2 et
