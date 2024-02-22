@@ -87,9 +87,8 @@ require('lazy').setup({
   -- Add Indent Guides
   {
     'lukas-reineke/indent-blankline.nvim',
+    main = 'ibl',
     opts = {
-      char = '┊',
-      show_trailing_blankline_indent = false,
     },
   },
 
@@ -374,4 +373,13 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+require('ibl').setup({
+  indent = {
+    char = '┊',
+  },
+  whitespace = {
+    remove_blankline_trail = false
+  }
+})
 -- vim: ts=2 sts=2 sw=2 et

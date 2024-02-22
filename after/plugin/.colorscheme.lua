@@ -1,4 +1,4 @@
-vim.cmd [[colorscheme tokyonight]]
+vim.cmd [[colorscheme everblush]]
 
 vim.keymap.set('n', '<leader>1', vim.cmd.Inspect, { desc = "Inspect current highlight item" })
 vim.keymap.set('n', '<leader>2', vim.cmd.TSPlaygroundToggle, { desc = "Inspect current highlight item" })
