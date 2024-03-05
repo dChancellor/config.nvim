@@ -18,8 +18,13 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
 
   -- Git related plugins
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
+  {
+    "kdheepak/lazygit.nvim",
+    -- optional for floating window border decoration
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
@@ -35,7 +40,6 @@ require('lazy').setup({
       'folke/neodev.nvim',
     },
   },
-
   {
     'hrsh7th/nvim-cmp',
     dependencies = {
@@ -120,6 +124,11 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
+
   { import = 'chancellor.plugins' },
 }, {})
 
@@ -161,7 +170,7 @@ vim.keymap.set('n', '<leader>/', function()
   })
 end, { desc = '[/] Fuzzily search in current buffer' })
 
-vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
+vim.keymap.set('n', '<leader>sg', require('telescope.builtin').git_files, { desc = '[S]earch [G]it files' })
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
@@ -234,8 +243,15 @@ require('nvim-treesitter.configs').setup {
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+vim.keymap.set('n', '<leader>ee', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
+vim.keymap.set('n', '<leader>el', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
+-- Lua
+vim.keymap.set("n", "<leader>ex", function() require("trouble").toggle() end)
+vim.keymap.set("n", "<leader>ew", function() require("trouble").toggle("workspace_diagnostics") end)
+vim.keymap.set("n", "<leader>ed", function() require("trouble").toggle("document_diagnostics") end)
+vim.keymap.set("n", "<leader>eq", function() require("trouble").toggle("quickfix") end)
+vim.keymap.set("n", "gR", function() require("trouble").toggle("lsp_references") end)
 
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
