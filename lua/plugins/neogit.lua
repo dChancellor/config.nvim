@@ -21,7 +21,6 @@ return {
     vim.keymap.set('n', '<leader>gc', function() vim.cmd('DiffviewClose') end, { desc = '[G]it [c]lose' })
     vim.keymap.set('n', '<leader>gd', function()
       local primary_branch = get_primary_branch()
-      print(primary_branch)
       vim.cmd('DiffviewOpen ' .. primary_branch .. '...HEAD')
     end, { desc = '[G]it [d]iff' })
   end
