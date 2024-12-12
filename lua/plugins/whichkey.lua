@@ -9,6 +9,7 @@ return {
     wk.add({
       { "<leader>h",        group = '[H]arpoon' },
       { "<leader>s",        group = '[S]earch' },
+      { "<leader>g",        group = '[G]it' },
       { "<leader><leader>", hidden = true }
     })
   end

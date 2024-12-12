@@ -1,8 +1,15 @@
+-- Get the primary branch from the remote
 local function get_primary_branch()
-  -- Get the primary branch from the remote
   local handle = io.popen("git remote show origin | grep 'HEAD branch' | awk '{print $NF}'")
-  local branch = handle:read("*a"):gsub("%s+", "") -- Trim whitespace
+
+  if not handle then
+    vim.notify("Error detecting primary branch: " .. (err or "Unknown error"), vim.log.levels.ERROR)
+    return nil
+  end
+
+  local branch = handle:read("*a"):gsub("%s+", "")
   handle:close()
+
   return branch or nil
 end
 
@@ -21,7 +28,9 @@ return {
     vim.keymap.set('n', '<leader>gc', function() vim.cmd('DiffviewClose') end, { desc = '[G]it [c]lose' })
     vim.keymap.set('n', '<leader>gd', function()
       local primary_branch = get_primary_branch()
-      vim.cmd('DiffviewOpen ' .. primary_branch .. '...HEAD')
+      if primary_branch then
+        vim.cmd('DiffviewOpen ' .. primary_branch .. '...HEAD')
+      end
     end, { desc = '[G]it [d]iff' })
   end
 }
