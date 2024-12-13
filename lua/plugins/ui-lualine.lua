@@ -1,4 +1,4 @@
-local colors = require('colors.tokens')
+local colors = require('tokens.colors')
 
 local get_unsaved_buffers = function()
   local number_of_unsaved_buffers = 0
@@ -28,7 +28,7 @@ return {
           lualine_z = { 'location' },
         }
       })
-    end
+    end,
   },
   {
     'letieu/harpoon-lualine',

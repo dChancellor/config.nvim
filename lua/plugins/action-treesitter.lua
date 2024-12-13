@@ -8,7 +8,7 @@ return {
           -- Required parsers
           "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline",
           -- Parsers added by me
-          'javascript', 'typescript', 'svelte', 'bash', 'tsx'
+          'javascript', 'typescript', 'svelte', 'bash', 'tsx', 'markdown'
         },
         auto_install = false,
         ignore_install = {},

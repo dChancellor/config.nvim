@@ -1,0 +1,1 @@
+return { 'shaunsingh/moonlight.nvim' }
