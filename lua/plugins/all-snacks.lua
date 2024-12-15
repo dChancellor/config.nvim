@@ -14,6 +14,7 @@ return {
   {
     bigfile = { enabled = true },
     git = { enabled = true },
+    gitbrowse = { enabled = true },
     dashboard = {
       sections = {
         { section = 'terminal', cmd = 'catimg -H 60 /mnt/c/Users/derek/Downloads/image0.png', height = 60 },
@@ -30,7 +31,10 @@ return {
     },
   },
   init = function()
-    vim.keymap.set('n', '<leader>de', toggle_dashboard_expansion)
-    vim.keymap.set('n', '<leader>gb', require('snacks').git.blame_line)
+    vim.keymap.set('n', '<leader>de', toggle_dashboard_expansion, { desc = '[D]ashboard [e]xpand' })
+    vim.keymap.set('n', '<leader>vd', function() Snacks.dashboard({ win = 0 }) end,
+      { desc = '[V]iew [d]ashboard' })
+    vim.keymap.set('n', '<leader>gb', function() Snacks.git.blame_line() end, { desc = '[G]it [b]lame' })
+    vim.keymap.set('n', '<leader>gg', function() Snacks.gitbrowse.open() end, { desc = '[G]oto [g]it' })
   end,
 }
