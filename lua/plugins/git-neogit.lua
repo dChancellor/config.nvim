@@ -24,13 +24,13 @@ return {
   config = function()
     local neogit = require('neogit')
     vim.keymap.set('n', '<leader>gs', function() neogit.open({ kind = 'split' }) end, { desc = '[G]it [s]how' })
-    vim.keymap.set('n', '<leader>go', function() vim.cmd('DiffviewOpen') end, { desc = '[G]it [o]pen' })
-    vim.keymap.set('n', '<leader>gc', function() vim.cmd('DiffviewClose') end, { desc = '[G]it [c]lose' })
-    vim.keymap.set('n', '<leader>gd', function()
+    vim.keymap.set('n', '<leader>gdo', function() vim.cmd('DiffviewOpen') end, { desc = '[G]it [d]iff [o]pen' })
+    vim.keymap.set('n', '<leader>gdc', function() vim.cmd('DiffviewClose') end, { desc = '[G]it [d]iff [c]lose' })
+    vim.keymap.set('n', '<leader>gdp', function()
       local primary_branch = get_primary_branch()
       if primary_branch then
         vim.cmd('DiffviewOpen ' .. primary_branch .. '...HEAD')
       end
-    end, { desc = '[G]it [d]iff' })
+    end, { desc = '[G]it [d]iff [p]rimary' })
   end
 }

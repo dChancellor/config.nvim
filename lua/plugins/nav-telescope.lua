@@ -70,15 +70,17 @@ return {
 
     local builtins = require('telescope.builtin')
 
-    vim.keymap.set('n', '<space>sf', builtins.find_files, { desc = '[S]earch [f]iles' })
-    vim.keymap.set('n', '<space>sg', live_multigrep, { desc = '[S]earch [g]rep' })
-    vim.keymap.set('n', '<space>sh', builtins.help_tags, { desc = '[S]earch [h]elp' })
-    vim.keymap.set('n', '<space>sn', function()
+    vim.keymap.set('n', '<leader>sf', builtins.find_files, { desc = '[S]earch [f]iles' })
+    vim.keymap.set('n', '<leader>sg', live_multigrep, { desc = '[S]earch [g]rep' })
+    vim.keymap.set('n', '<leader>sh', builtins.help_tags, { desc = '[S]earch [h]elp' })
+    vim.keymap.set('n', '<leader>sb', builtins.git_branches, { desc = '[S]earch [b]ranches' })
+
+    vim.keymap.set('n', '<leader>sn', function()
       builtins.find_files {
         cwd = vim.fn.stdpath('config')
       }
     end, { desc = '[S]earch [n]vim' })
-    vim.keymap.set('n', '<space>sp', function()
+    vim.keymap.set('n', '<leader>sp', function()
       builtins.find_files {
         cwd = vim.fs.joinpath(vim.fn.stdpath('data'), 'lazy')
       }
