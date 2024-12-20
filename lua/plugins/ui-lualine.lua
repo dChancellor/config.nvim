@@ -1,3 +1,5 @@
+vim.g.copilot_logged_in = false
+
 local colors = require('tokens.colors')
 
 local get_unsaved_buffers = function()
@@ -13,6 +15,16 @@ local get_unsaved_buffers = function()
   return ''
 end
 
+local get_copilot_status = function()
+  local copilot_api = require('copilot.api')
+  -- copilot_api.register
+  if vim.g.copilot_logged_in then
+    return 'Logged In'
+  else
+    return 'Logged Out'
+  end
+end
+
 return {
   {
     'nvim-lualine/lualine.nvim',
@@ -23,7 +35,7 @@ return {
           lualine_a = { 'mode' },
           lualine_b = { 'branch', { 'diff', separator = {} }, { get_unsaved_buffers, separator = {} } },
           lualine_c = { { '%=', separator = '' }, { 'harpoon2', icons_enabled = false, color_active = { fg = colors.active }, separator = '|' }, { 'filename', separator = '|' }, { 'diagnostics' } },
-          lualine_x = { 'filetype' },
+          lualine_x = { { get_copilot_status }, { 'filetype' } },
           lualine_y = { { 'progress', separator = {} } },
           lualine_z = { 'location' },
         }

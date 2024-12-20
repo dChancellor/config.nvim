@@ -1,16 +1,19 @@
 For sure Plugins
 
+[ ] Linter/Formatting
+[ ] Snippets
+[ ] Debugging (Trouble?)
+
+Tier 2
 [ ] Project Management (project.nvim?)
-[ ] Noice
 [ ] Testing
+[ ] Mini.surround
+
+Tier 3
 [ ] Markdown specific things
-
-
-Possible Plugins
-
-[ ] Eyeliner.nvim
-[ ] some git blame plugin(vim-fugitive?)
-
 
 After Setup
 [ ] Snapshot nvim setup through Lazy
+[ ] Copy gitbrowse but for sourcegraph as well
+[ ] Make a better statuscolumn UI for my liking
+[ ] Add javascript/typescript folding for the imports at the top of the file

@@ -44,3 +44,17 @@ vim.opt.ignorecase = true
 
 -- Prevent line wrapping
 vim.opt.wrap = false
+
+-- Sets the fold method for automatic fold creation to be based off indentation
+vim.opt.foldmethod = 'indent'
+
+-- Set the fold level so folds aren't closed by default
+vim.opt.foldlevel = 99
+
+-- Set the default vertical split to be on the right
+vim.opt.splitright = true
+
+-- Highlights the current line with different background
+vim.opt.cursorline = true
+
+vim.opt.signcolumn = 'yes'

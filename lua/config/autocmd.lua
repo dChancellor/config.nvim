@@ -15,15 +15,3 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt.formatoptions:remove({ "c", "r", "o" })
   end,
 })
-
-
-vim.api.nvim_create_autocmd('ColorScheme', {
-  pattern = 'solarized',
-  callback = function()
-    vim.api.nvim_set_hl(0, 'CopilotSuggestion', {
-      fg = '#222222',
-      ctermfg = 8,
-      force = true
-    })
-  end
-})
