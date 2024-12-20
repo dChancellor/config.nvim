@@ -25,7 +25,6 @@ local function pick_header_image()
   end
 end
 
-print('hello')
 return {
   "folke/snacks.nvim",
   priority = 1000,
@@ -81,6 +80,8 @@ return {
     vim.keymap.set('n', '<leader>gg', function() Snacks.gitbrowse.open() end, { desc = '[G]oto [g]it' })
     vim.keymap.set('n', '<leader>mn', function() Snacks.words.jump(vim.v.count1) end, { desc = '[M]ove to [n]ext' })
     vim.keymap.set('n', '<leader>mp', function() Snacks.words.jump(-vim.v.count1) end, { desc = '[M]ove to [p]revious' })
+    vim.keymap.set('n', '<leader>vm', function() Snacks.notifier.show_history() end,
+      { desc = '[V]iew [m]essage history' })
 
     -- Gives progress on loading the LSP
     vim.api.nvim_create_autocmd("LspProgress", {
