@@ -33,12 +33,14 @@ return {
   {
     -- Helps with with performance on big files
     bigfile = { enabled = true },
+    -- Shows the initial loading dashboard
     dashboard = {
       sections = {
-        { section = 'terminal', cmd = pick_header_image(), height = 100, padding = 4, indent = 4 },
+        { section = 'terminal',     cmd = pick_header_image(), height = 30, padding = 4, indent = 4 },
+        { section = 'recent_files', title = 'Recent files',    limit = 3,   padding = 1, indent = 2 },
         {
           section = 'projects',
-          limit = 5,
+          limit = 4,
           title = 'Projects',
           indent = 2,
           enabled = function()
@@ -64,6 +66,7 @@ return {
     },
     -- Enhanced statuscolumn
     statuscolumn = { folds = { open = true } },
+    -- Highlight LSP references
     words = { enabled = true },
   },
   init = function()

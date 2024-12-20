@@ -21,9 +21,8 @@ vim.keymap.set("n", "<esc>", ":noh<cr>", { desc = 'Removes highlights on <esc>' 
 vim.keymap.set('n', '<leader>f', 'za', { desc = 'Toggle fold' })
 
 -- Sets a keybind to toggle comments
-vim.keymap.set('n', '<leader>c', function() vim.cmd('normal gcc') end, { desc = 'Toggle comments' })
-vim.keymap.set('v', '<leader>c', function() vim.cmd('normal gc') end, { desc = 'Toggle comments' })
-
+vim.keymap.set('n', '<leader><tab>', function() vim.cmd('normal gcc') end, { desc = 'Toggle comments' })
+vim.keymap.set('v', '<leader><tab>', function() vim.cmd('normal gc') end, { desc = 'Toggle comments' })
 
 -- Key mapping to close all other buffers
 vim.keymap.set('n', '<leader>co', function()
@@ -44,3 +43,10 @@ vim.keymap.set('n', '<leader>co', function()
     end
   end
 end, { noremap = true, silent = true, desc = 'Close all other buffers' })
+
+-- Map <S-Left> and <S-Right> to move to beginning and end of line
+vim.keymap.set('n', '<S-Left>', '^', { noremap = true, silent = true, desc = 'Move to beginning of line' })
+vim.keymap.set('n', '<S-Right>', '$', { noremap = true, silent = true, desc = 'Move to end of line' })
+
+-- Map redo to capital U
+vim.keymap.set('n', 'U', '<C-r>', { noremap = true, silent = true, desc = 'Redo' })
