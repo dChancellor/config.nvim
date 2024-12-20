@@ -25,6 +25,7 @@ local function pick_header_image()
   end
 end
 
+print('hello')
 return {
   "folke/snacks.nvim",
   priority = 1000,
