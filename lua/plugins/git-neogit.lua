@@ -34,6 +34,9 @@ return {
     end, { desc = '[G]it [d]iff [p]rimary' })
     neogit.setup({
       graph_style = 'unicode',
+      git_services = {
+        ['github.com'] = 'https://github.com/${owner}/${repository}/compare/${branch_name}'
+      },
       integrations = {
         diffview = true,
         telescope = true,

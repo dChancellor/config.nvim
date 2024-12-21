@@ -40,12 +40,25 @@ return {
         { section = 'recent_files', title = 'Recent files',    limit = 3,   padding = 1, indent = 2 },
         {
           section = 'projects',
+          padding = 1,
           limit = 4,
           title = 'Projects',
           indent = 2,
           enabled = function()
             return vim.g.dashboard_expanded
           end
+        },
+        {
+          section = 'terminal',
+          icon = ' ',
+          title = 'Git Status',
+          enabled = function()
+            return vim.fn.isdirectory('.git') == 1 and vim.g.dashboard_expanded
+          end,
+          cmd = 'git diff --stat -B -M -C',
+          height = 8,
+          padding = 2,
+          indent = 0
         },
       },
     },
