@@ -53,7 +53,9 @@ return {
           icon = ' ',
           title = 'Git Status',
           enabled = function()
-            return vim.fn.isdirectory('.git') == 1 and vim.g.dashboard_expanded
+            local has_diff = io.popen('git diff --quiet'):close()
+            print(has_diff)
+            return vim.fn.isdirectory('.git') == 1 and vim.g.dashboard_expanded and has_diff
           end,
           cmd = 'git diff --stat -B -M -C',
           height = 8,
