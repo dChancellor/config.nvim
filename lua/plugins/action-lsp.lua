@@ -33,6 +33,12 @@ return {
       local lspconfig = require("lspconfig")
       local capabilities = require("blink.cmp").get_lsp_capabilities()
 
+      vim.filetype.add({
+        pattern = {
+          [".*%.ansible%.yaml"] = "ansible.yaml",
+        },
+      })
+
       local servers = {
         bashls = {},
         lua_ls = {},
@@ -40,8 +46,13 @@ return {
         ts_ls = {},
         eslint = {},
         denols = {},
+        ansiblels = {
+          filetypes = { "ansible.yaml" },
+        },
       }
+
       local formatters = {
+        ["ansible-lint"] = {},
         shfmt = {},
         stylua = {
           append_args = function()

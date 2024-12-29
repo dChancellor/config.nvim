@@ -17,7 +17,7 @@ function M.setup()
   local curl = require("plenary.curl")
   -- local parser = require("lua-htmlparser")
   -- local results = search_mdn({ "bold", "string" })
-  print("MDN search plugin loaded")
+  -- print("MDN search plugin loaded")
 end
 
 return M
