@@ -1,7 +1,7 @@
 return {
-  'rebelot/kanagawa.nvim',
+  "rebelot/kanagawa.nvim",
   config = function()
-    require('kanagawa').setup({
+    require("kanagawa").setup({
       overrides = function(colors)
         local theme = colors.theme
         return {
@@ -26,11 +26,12 @@ return {
         theme = {
           all = {
             ui = {
-              bg_gutter = 'none'
-            }
-          }
-        }
-      }
+              bg_gutter = "none",
+            },
+          },
+        },
+      },
     })
-  end
+    vim.cmd.colorscheme("kanagawa-wave")
+  end,
 }

@@ -28,8 +28,21 @@ local function pick_header_image()
 end
 
 local dashboard_opts = {
+  preset = {
+    keys = require("custom-plugins.get-jira-tasks.lua.get-jira-tasks").get_active_tickets(),
+  },
   sections = {
-    { section = "terminal", cmd = pick_header_image(), height = 30, padding = 4, indent = 4, random = 10 },
+    {
+      title = "Assigned Issues",
+      section = "keys",
+      padding = 1,
+      indent = 2,
+      enabled = function()
+        return true
+        -- return vim.g.dashboard_expanded
+      end,
+    },
+    -- { section = "terminal", cmd = pick_header_image(), height = 30, padding = 4, indent = 4, random = 10 },
     { section = "recent_files", title = "Recent files", limit = 3, padding = 1, indent = 2 },
     {
       section = "projects",
@@ -108,21 +121,5 @@ return {
     vim.keymap.set("n", "<leader>vm", function()
       Snacks.notifier.show_history()
     end, { desc = "[V]iew [m]essage history" })
-
-    -- Gives progress on loading the LSP
-    vim.api.nvim_create_autocmd("LspProgress", {
-      ---@param ev {data: {client_id: integer, params: lsp.ProgressParams}}
-      callback = function(ev)
-        local spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
-        vim.notify(vim.lsp.status(), "info", {
-          id = "lsp_progress",
-          title = "LSP Progress",
-          opts = function(notif)
-            notif.icon = ev.data.params.value.kind == "end" and " "
-              or spinner[math.floor(vim.uv.hrtime() / (1e6 * 80)) % #spinner + 1]
-          end,
-        })
-      end,
-    })
   end,
 }
